@@ -29,6 +29,6 @@ messages across the network. Those messages can be split into smaller
 pieces by TCP, so the a developer cannot assume that a single call to
 recv() will get the entire message.
 
-Run `echo-server-simple` with `echo-client` and see what happens.
+Run `echo-server-slow` with `echo-client` and see what happens.
 
 
