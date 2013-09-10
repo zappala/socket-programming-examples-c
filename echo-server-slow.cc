@@ -19,6 +19,7 @@ main(int argc, char **argv)
     int server, client;
     char *buf;
     int buflen;
+    char *ptr;
     int nread;
 
     // setup default arguments
@@ -86,8 +87,12 @@ main(int argc, char **argv)
             if (nread == 0)
                 break;
 
-            // send a response
-            send(client, buf, nread, 0);
+            // send a response one character at a time
+            char* ptr = buf;
+            for (int i=0; i<nread; i++) {
+              send(client, ptr, 1, 0);
+              ptr++;
+            }
         }
         close(client);
     }

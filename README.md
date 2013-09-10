@@ -17,6 +17,16 @@ return values of send() and recv(). This means that long messages may
 not be echoed properly. Better code is in subsequent examples. This code
 is here just to show the basics.
 
+## Slow Echo Server
 
+To illustrate the poor quality of the code in the simple echo server
+and client, the file `echo-server-slow.cc` is an echo server that
+sends replies only one character at a time. While this is not how any
+server is written, it illustrates what can happen when sending larger
+messages across the network. Those messages can be split into smaller
+pieces by TCP, so the a developer cannot assume that a single call to
+recv() will get the entire message.
+
+Run the `echo-server-simple` with `echo-client` and see what happens.
 
 

@@ -1,3 +1,14 @@
+# Compiled Programs
+echo-server
+echo-client
+echo-server-slow
+
+# Emacs Backup
+*~
+
+# Dependencies
+*.d
+
 # Compiled Object files
 *.slo
 *.lo
