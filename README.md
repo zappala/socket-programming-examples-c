@@ -12,6 +12,8 @@ The files `echo-server.cc` and `echo-client.cc` contain a basic echo
 server and client. The server handles only one client at a time and
 simply sends back to the client whatever it receives.
 
+Run `echo-server` with `echo-client` and see what happens.
+
 **Caution**: both the client and the server do not properly check the
 return values of send() and recv(). This means that long messages may
 not be echoed properly. Better code is in subsequent examples. This code
@@ -27,6 +29,6 @@ messages across the network. Those messages can be split into smaller
 pieces by TCP, so the a developer cannot assume that a single call to
 recv() will get the entire message.
 
-Run the `echo-server-simple` with `echo-client` and see what happens.
+Run `echo-server-simple` with `echo-client` and see what happens.
 
 
