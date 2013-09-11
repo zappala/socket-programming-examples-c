@@ -1,25 +1,33 @@
 # Makefile for socket examples
 
 CXX=			g++ $(CCFLAGS)
-ECHO-SERVER=		echo-server.o
-ECHO-CLIENT=		echo-client.o
+ECHO-SERVER-SIMPLE=	echo-server-simple.o
+ECHO-CLIENT-SIMPLE=	echo-client-simple.o
 ECHO-SERVER-SLOW=	echo-server-slow.o
-OBJS =			$(ECHO-SERVER) $(ECHO-CLIENT)
+ECHO-SERVER=		echo-server.o server.o
+ECHO-CLIENT=		echo-client.o client.o
+OBJS =			$(ECHO-SERVER-SIMPLE) $(ECHO-CLIENT-SIMPLE) $(ECHO-SERVER-SLOW) $(ECHO-SERVER) $(ECHO-CLIENT) 
 
 LIBS=
 
 CCFLAGS= -g
 
-all:	echo-server echo-client echo-server-slow
+all:	echo-server-simple echo-client-simple echo-server-slow echo-server echo-client
+
+echo-server-simple:$(ECHO-SERVER-SIMPLE)
+	$(CXX) -o echo-server-simple $(ECHO-SERVER-SIMPLE) $(LIBS)
+
+echo-client-simple:$(ECHO-CLIENT-SIMPLE)
+	$(CXX) -o echo-client-simple $(ECHO-CLIENT-SIMPLE) $(LIBS)
+
+echo-server-slow:$(ECHO-SERVER-SLOW)
+	$(CXX) -o echo-server-slow $(ECHO-SERVER-SLOW) $(LIBS)
 
 echo-server:$(ECHO-SERVER)
 	$(CXX) -o echo-server $(ECHO-SERVER) $(LIBS)
 
 echo-client:$(ECHO-CLIENT)
 	$(CXX) -o echo-client $(ECHO-CLIENT) $(LIBS)
-
-echo-server-slow:$(ECHO-SERVER-SLOW)
-	$(CXX) -o echo-server-slow $(ECHO-SERVER-SLOW) $(LIBS)
 
 clean:
 	rm -f $(OBJS) $(OBJS:.o=.d)

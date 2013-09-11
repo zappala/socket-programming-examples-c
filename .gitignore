@@ -1,7 +1,9 @@
 # Compiled Programs
+echo-server-simple
+echo-client-simple
+echo-server-slow
 echo-server
 echo-client
-echo-server-slow
 
 # Emacs Backup
 *~
