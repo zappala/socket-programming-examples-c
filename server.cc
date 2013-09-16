@@ -88,7 +88,7 @@ Server::handle(int client) {
     }
 }
 
-string
+string&
 Server::get_request(int client) {
     string request = "";
     // read until we get a newline
@@ -114,7 +114,7 @@ Server::get_request(int client) {
 }
 
 bool
-Server::send_response(int client, string response) {
+Server::send_response(int client, const string& response) {
     // prepare to send response
     const char* ptr = response.c_str();
     int nleft = response.length();
