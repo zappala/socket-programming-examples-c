@@ -20,9 +20,9 @@ private:
 
     void create();
     void serve();
-    void handle(int);
-    string get_request(int);
-    bool send_response(int, string);
+    void handle(int port);
+    string& get_request(int client);
+    bool send_response(int client, const string& response);
 
     int port_;
     int server_;

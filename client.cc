@@ -1,6 +1,6 @@
 #include "client.h"
 
-Client::Client(string host, int port) {
+Client::Client(const string& host, int port) {
     // setup variables
     host_ = host;
     port_ = port;
@@ -13,6 +13,7 @@ Client::Client(string host, int port) {
 }
 
 Client::~Client() {
+    delete buf_;
 }
 
 void
@@ -70,7 +71,7 @@ Client::echo() {
 }
 
 bool
-Client::send_request(string request) {
+Client::send_request(const string& request) {
     // prepare to send request
     const char* ptr = request.c_str();
     int nleft = request.length();
