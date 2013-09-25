@@ -4,6 +4,8 @@ echo-client-simple
 echo-server-slow
 echo-server
 echo-client
+unix-echo-server
+unix-echo-client
 
 # Emacs Backup
 *~

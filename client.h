@@ -1,4 +1,5 @@
-#include <arpa/inet.h>
+#pragma once
+
 #include <errno.h>
 #include <netdb.h>
 #include <stdio.h>
@@ -16,18 +17,18 @@ using namespace std;
 
 class Client {
 public:
-    Client(string, int);
+    Client();
     ~Client();
 
-private:
+    void run();
 
-    void create();
+protected:
+    virtual void create();
+    virtual void close_socket();
     void echo();
     bool send_request(string);
     bool get_response();
 
-    int port_;
-    string host_;
     int server_;
     int buflen_;
     char* buf_;

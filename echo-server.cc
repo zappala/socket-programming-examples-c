@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "server.h"
+#include "inet-server.h"
 
 using namespace std;
 
@@ -28,5 +28,6 @@ main(int argc, char **argv)
         }
     }
 
-    Server server = Server(port);
+    InetServer server = InetServer(port);
+    server.run();
 }

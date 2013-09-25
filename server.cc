@@ -1,14 +1,9 @@
 #include "server.h"
 
-Server::Server(int port) {
+Server::Server() {
     // setup variables
-    port_ = port;
     buflen_ = 1024;
     buf_ = new char[buflen_+1];
-
-    // create and run the server
-    create();
-    serve();
 }
 
 Server::~Server() {
@@ -16,41 +11,18 @@ Server::~Server() {
 }
 
 void
+Server::run() {
+    // create and run the server
+    create();
+    serve();
+}
+
+void
 Server::create() {
-    struct sockaddr_in server_addr;
+}
 
-    // setup socket address structure
-    memset(&server_addr,0,sizeof(server_addr));
-    server_addr.sin_family = AF_INET;
-    server_addr.sin_port = htons(port_);
-    server_addr.sin_addr.s_addr = INADDR_ANY;
-
-    // create socket
-    server_ = socket(PF_INET,SOCK_STREAM,0);
-    if (!server_) {
-        perror("socket");
-        exit(-1);
-    }
-
-    // set socket to immediately reuse port when the application closes
-    int reuse = 1;
-    if (setsockopt(server_, SOL_SOCKET, SO_REUSEADDR, &reuse, sizeof(reuse)) < 0) {
-        perror("setsockopt");
-        exit(-1);
-    }
-
-    // call bind to associate the socket with our local address and
-    // port
-    if (bind(server_,(const struct sockaddr *)&server_addr,sizeof(server_addr)) < 0) {
-        perror("bind");
-        exit(-1);
-    }
-
-      // convert the socket to listen for incoming connections
-    if (listen(server_,SOMAXCONN) < 0) {
-        perror("listen");
-        exit(-1);
-    }
+void
+Server::close_socket() {
 }
 
 void
@@ -64,11 +36,8 @@ Server::serve() {
     while ((client = accept(server_,(struct sockaddr *)&client_addr,&clientlen)) > 0) {
 
         handle(client);
-        close(client);
     }
-    
-    close(server_);
-
+    close_socket();
 }
 
 void
@@ -86,6 +55,7 @@ Server::handle(int client) {
         if (not success)
             break;
     }
+    close(client);
 }
 
 string

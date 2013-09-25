@@ -1,5 +1,7 @@
-#include <arpa/inet.h>
+#pragma once
+
 #include <errno.h>
+#include <netinet/in.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -13,18 +15,19 @@ using namespace std;
 
 class Server {
 public:
-    Server(int);
+    Server();
     ~Server();
 
-private:
-
-    void create();
+    void run();
+    
+protected:
+    virtual void create();
+    virtual void close_socket();
     void serve();
     void handle(int);
     string get_request(int);
     bool send_response(int, string);
 
-    int port_;
     int server_;
     int buflen_;
     char* buf_;
