@@ -6,6 +6,10 @@ Simple examples that show how to do socket programming in C++. Use
 
 to compile all the code using the supplied `Makefile`.
 
+I have also included a Python script to compile the code, called
+`make.py` to illustrate the differences between a simple compile script and
+what Make does for you.
+
 ## Simple Echo Server and Client
 
 The files `echo-server-simple.cc` and `echo-client-simple.cc` contain
