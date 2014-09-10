@@ -1,4 +1,4 @@
-# Makefile for socket examples
+# Makefile for UNIX echo client and server
 
 CXX=			g++ $(CCFLAGS)
 

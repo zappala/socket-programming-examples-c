@@ -1,6 +1,7 @@
-# Makefile for socket examples
+# Makefile for echo client and server
 
 CXX=			g++ $(CCFLAGS)
+
 ECHO-SERVER=		echo-server.o inet-server.o server.o
 ECHO-CLIENT=		echo-client.o inet-client.o client.o
 OBJS =			$(ECHO-SERVER) $(ECHO-CLIENT)
