@@ -90,6 +90,7 @@ main(int argc, char **argv)
             // send a response one character at a time
             char* ptr = buf;
             for (int i=0; i<nread; i++) {
+              sleep(1);
               send(client, ptr, 1, 0);
               ptr++;
             }
