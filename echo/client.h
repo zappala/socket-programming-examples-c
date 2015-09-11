@@ -17,18 +17,20 @@ using namespace std;
 
 class Client {
 public:
-    Client();
+    Client(string host, int port);
     ~Client();
 
     void run();
 
-protected:
+private:
     virtual void create();
     virtual void close_socket();
     void echo();
     bool send_request(string);
     bool get_response();
 
+    string host_;
+    int port_;
     int server_;
     int buflen_;
     char* buf_;

@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "inet-client.h"
+#include "client.h"
 
 using namespace std;
 
@@ -32,7 +32,7 @@ main(int argc, char **argv)
         }
     }
 
-    InetClient client = InetClient(host, port);
+    Client client = Client(host, port);
     client.run();
 }
 

@@ -2,8 +2,8 @@
 
 CXX=			g++ $(CCFLAGS)
 
-ECHO-SERVER=		echo-server.o inet-server.o server.o
-ECHO-CLIENT=		echo-client.o inet-client.o client.o
+ECHO-SERVER=		echo-server.o server.o
+ECHO-CLIENT=		echo-client.o client.o
 OBJS =			$(ECHO-SERVER) $(ECHO-CLIENT)
 
 LIBS=
