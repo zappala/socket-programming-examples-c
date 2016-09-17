@@ -1,6 +1,6 @@
 # Makefile for echo client and server
 
-CXX=			g++ $(CCFLAGS)
+CXX=			g++ $(CXXFLAGS)
 
 ECHO-SERVER=		echo-server.o server.o
 ECHO-CLIENT=		echo-client.o client.o
@@ -8,14 +8,14 @@ OBJS =			$(ECHO-SERVER) $(ECHO-CLIENT)
 
 LIBS=
 
-CCFLAGS= -g
+CXXFLAGS= -g
 
-all:	echo-server echo-client
+all:	server client
 
-echo-server:$(ECHO-SERVER)
+server:$(ECHO-SERVER)
 	$(CXX) -o server $(ECHO-SERVER) $(LIBS)
 
-echo-client:$(ECHO-CLIENT)
+client:$(ECHO-CLIENT)
 	$(CXX) -o client $(ECHO-CLIENT) $(LIBS)
 
 clean:
@@ -24,11 +24,7 @@ clean:
 realclean:
 	rm -f $(OBJS) $(OBJS:.o=.d) server client
 
+%.o : %.cc
+	$(CXX) -c -o $@ -MD -MP ${CPPFLAGS} ${CXXFLAGS} $<
 
-# These lines ensure that dependencies are handled automatically.
-%.d:	%.cc
-	$(SHELL) -ec '$(CC) -M $(CPPFLAGS) $< \
-		| sed '\''s/\($*\)\.o[ :]*/\1.o $@ : /g'\'' > $@; \
-		[ -s $@ ] || rm -f $@'
-
-include	$(OBJS:.o=.d)
+-include $(OBJS:.o=.d)
