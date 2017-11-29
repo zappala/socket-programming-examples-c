@@ -8,7 +8,7 @@ Server::Server(int port) {
 }
 
 Server::~Server() {
-    delete buf_;
+    delete[] buf_;
 }
 
 void

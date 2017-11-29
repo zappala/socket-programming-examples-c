@@ -7,7 +7,7 @@ Server::Server() {
 }
 
 Server::~Server() {
-    delete buf_;
+    delete[] buf_;
 }
 
 void
