@@ -8,7 +8,7 @@ OBJS =			$(ECHO-SERVER) $(ECHO-CLIENT)
 
 LIBS=
 
-CXXFLAGS= -g
+CXXFLAGS= -g -std=c++17
 
 all:	server client
 

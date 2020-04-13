@@ -4,11 +4,11 @@ CXX=			g++ $(CCFLAGS)
 
 UNIX-ECHO-SERVER=	unix-echo-server.o unix-server.o server.o
 UNIX-ECHO-CLIENT=	unix-echo-client.o unix-client.o client.o
-OBJS =			$(UNIX-ECHO-SERVER) $(UNIX-ECHO-CLIENT) 
+OBJS =			$(UNIX-ECHO-SERVER) $(UNIX-ECHO-CLIENT)
 
 LIBS=
 
-CCFLAGS= -g
+CCFLAGS= -g -std=c++17
 
 all:	unix-echo-server unix-echo-client
 
