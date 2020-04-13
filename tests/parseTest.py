@@ -23,7 +23,7 @@ class Tester:
                           default='localhost',
                           help="server to connect to")
 
-        (options,args) = parser.parse_args()
+        (options, args) = parser.parse_args()
         self.host = options.host
         self.port = options.port
 
@@ -34,7 +34,7 @@ class Tester:
             self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
             self.server.connect((self.host,self.port))
         except socket.error, (value,message):
-            print "Could not open socket: " + message
+            print("Could not open socket:", message)
             sys.exit(1)
 
     def close_socket(self):
@@ -45,10 +45,10 @@ class Tester:
 
     def testProtocol(self):
         self.open_socket()
-        file = open('test-messages.txt')
-        for line in file.readlines():
-            self.server.sendall(line)
-        self.close_socket()
+        with open('test-messages.txt', 'r') as f:
+            for line in file.readlines():
+                self.server.sendall(line)
+            self.close_socket()
 
 
 if __name__ == '__main__':
