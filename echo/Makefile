@@ -8,7 +8,7 @@ OBJS =			$(ECHO-SERVER) $(ECHO-CLIENT)
 
 LIBS=
 
-CXXFLAGS= -g -std=c++17
+CXXFLAGS= -g -std=c++17 -Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic
 
 all:	server client
 

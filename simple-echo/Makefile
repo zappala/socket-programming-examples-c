@@ -8,7 +8,7 @@ OBJS =		$(SERVER) $(CLIENT) $(SLOW-SERVER)
 
 LIBS=
 
-CCFLAGS= -g -std=c++17
+CCFLAGS= -g -std=c++17 -Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic
 
 all:	server client slow-server
 
