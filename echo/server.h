@@ -11,22 +11,20 @@
 
 #include <string>
 
-using namespace std;
-
 class Server {
 public:
     Server(int port);
     ~Server();
 
     void run();
-    
+
 private:
     void create();
     void close_socket();
     void serve();
     void handle(int);
-    string get_request(int);
-    bool send_response(int, string);
+    std::string get_request(int);
+    bool send_response(int, std::string);
 
     int port_;
     int server_;

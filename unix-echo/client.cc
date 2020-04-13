@@ -1,5 +1,9 @@
 #include "client.h"
 
+#include <fstream>
+#include <iostream>
+#include <string>
+
 Client::Client() {
     // setup variables
     buflen_ = 1024;
@@ -25,10 +29,10 @@ Client::close_socket() {
 
 void
 Client::echo() {
-    string line;
-    
+    std::string line;
+
     // loop to handle user interface
-    while (getline(cin,line)) {
+    while (std::getline(std::cin,line)) {
         // append a newline
         line += "\n";
         // send request
@@ -46,7 +50,7 @@ Client::echo() {
 }
 
 bool
-Client::send_request(string request) {
+Client::send_request(std::string request) {
     // prepare to send request
     const char* ptr = request.c_str();
     int nleft = request.length();
@@ -74,9 +78,9 @@ Client::send_request(string request) {
 
 bool
 Client::get_response() {
-    string response = "";
+    std::string response = "";
     // read until we get a newline
-    while (response.find("\n") == string::npos) {
+    while (response.find("\n") == std::string::npos) {
         int nread = recv(server_,buf_,1024,0);
         if (nread < 0) {
             if (errno == EINTR)
@@ -94,6 +98,6 @@ Client::get_response() {
     }
     // a better client would cut off anything after the newline and
     // save it in a cache
-    cout << response;
+    std::cout << response;
     return true;
 }

@@ -7,6 +7,10 @@ echo-client
 unix-echo-server
 unix-echo-client
 
+/*/client
+/*/server
+/*/slow-server
+
 # Emacs Backup
 *~
 

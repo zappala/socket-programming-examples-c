@@ -5,8 +5,6 @@
 
 #include "client.h"
 
-using namespace std;
-
 int
 main(int argc, char **argv)
 {
@@ -14,7 +12,7 @@ main(int argc, char **argv)
 
     // setup default arguments
     int port = 3000;
-    string host = "localhost";
+    std::string host = "localhost";
 
     // process command line options using getopt()
     // see "man 3 getopt"
@@ -27,7 +25,7 @@ main(int argc, char **argv)
                 host = optarg;
                 break;
             default:
-                cout << "client [-h host] [-p port]" << endl;
+                std::cout << "client [-h host] [-p port]" << std::endl;
                 exit(EXIT_FAILURE);
         }
     }

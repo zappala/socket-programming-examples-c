@@ -8,8 +8,6 @@
 
 #include <iostream>
 
-using namespace std;
-
 int
 main(int argc, char **argv)
 {
@@ -33,7 +31,7 @@ main(int argc, char **argv)
                 port = atoi(optarg);
                 break;
             default:
-                cout << "server [-p port]" << endl;
+                std::cout << "server [-p port]" << std::endl;
                 exit(EXIT_FAILURE);
         }
     }
@@ -80,7 +78,7 @@ main(int argc, char **argv)
 
           // loop to handle all requests
         while (1) {
-        
+
               // read a request
             memset(buf,0,buflen);
             nread = recv(client,buf,buflen,0);
@@ -97,6 +95,6 @@ main(int argc, char **argv)
         }
         close(client);
     }
-    
+
     close(server);
 }

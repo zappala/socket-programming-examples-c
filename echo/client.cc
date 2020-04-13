@@ -1,6 +1,8 @@
 #include "client.h"
 
-Client::Client(string host, int port) {
+#include <string>
+
+Client::Client(std::string host, int port) {
     // setup variables
     host_ = host;
     port_ = port;
@@ -25,7 +27,7 @@ Client::create() {
     struct hostent *hostEntry;
     hostEntry = gethostbyname(host_.c_str());
     if (!hostEntry) {
-        cout << "No such host name: " << host_ << endl;
+        std::cout << "No such host name: " << host_ << std::endl;
         exit(-1);
     }
 
@@ -56,10 +58,10 @@ Client::close_socket() {
 
 void
 Client::echo() {
-    string line;
-    
+    std::string line;
+
     // loop to handle user interface
-    while (getline(cin,line)) {
+    while (std::getline(std::cin,line)) {
         // append a newline
         line += "\n";
         // send request
@@ -77,7 +79,7 @@ Client::echo() {
 }
 
 bool
-Client::send_request(string request) {
+Client::send_request(std::string request) {
     // prepare to send request
     const char* ptr = request.c_str();
     int nleft = request.length();
@@ -105,9 +107,9 @@ Client::send_request(string request) {
 
 bool
 Client::get_response() {
-    string response = "";
+    std::string response = "";
     // read until we get a newline
-    while (response.find("\n") == string::npos) {
+    while (response.find("\n") == std::string::npos) {
         int nread = recv(server_,buf_,1024,0);
         if (nread < 0) {
             if (errno == EINTR)
@@ -125,6 +127,6 @@ Client::get_response() {
     }
     // a better client would cut off anything after the newline and
     // save it in a cache
-    cout << response;
+    std::cout << response;
     return true;
 }

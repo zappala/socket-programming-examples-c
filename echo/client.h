@@ -13,11 +13,9 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 class Client {
 public:
-    Client(string host, int port);
+    Client(std::string host, int port);
     ~Client();
 
     void run();
@@ -26,10 +24,10 @@ private:
     virtual void create();
     virtual void close_socket();
     void echo();
-    bool send_request(string);
+    bool send_request(std::string);
     bool get_response();
 
-    string host_;
+    std::string host_;
     int port_;
     int server_;
     int buflen_;

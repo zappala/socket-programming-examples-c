@@ -9,11 +9,7 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
-#include <fstream>
-#include <iostream>
 #include <string>
-
-using namespace std;
 
 class Client {
 public:
@@ -26,7 +22,7 @@ protected:
     virtual void create();
     virtual void close_socket();
     void echo();
-    bool send_request(string);
+    bool send_request(std::string);
     bool get_response();
 
     int server_;

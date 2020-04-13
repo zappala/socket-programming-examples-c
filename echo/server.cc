@@ -81,7 +81,7 @@ Server::handle(int client) {
     // loop to handle all requests
     while (1) {
         // get a request
-        string request = get_request(client);
+        std::string request = get_request(client);
         // break if client is done or an error occurred
         if (request.empty())
             break;
@@ -94,11 +94,11 @@ Server::handle(int client) {
     close(client);
 }
 
-string
+std::string
 Server::get_request(int client) {
-    string request = "";
+    std::string request = "";
     // read until we get a newline
-    while (request.find("\n") == string::npos) {
+    while (request.find("\n") == std::string::npos) {
         int nread = recv(client,buf_,1024,0);
         if (nread < 0) {
             if (errno == EINTR)
@@ -120,7 +120,7 @@ Server::get_request(int client) {
 }
 
 bool
-Server::send_response(int client, string response) {
+Server::send_response(int client, std::string response) {
     // prepare to send response
     const char* ptr = response.c_str();
     int nleft = response.length();

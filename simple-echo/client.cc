@@ -10,15 +10,13 @@
 #include <fstream>
 #include <iostream>
 
-using namespace std;
-
 int
 main(int argc, char **argv)
 {
     // setup default arguments
     int option;
     int port = 3000;
-    string host = "localhost";
+    std::string host = "localhost";
 
     // process command line options using getopt()
     // see "man 3 getopt"
@@ -31,7 +29,7 @@ main(int argc, char **argv)
                 host = optarg;
                 break;
             default:
-                cout << "client [-s IP address] [-p port]" << endl;
+                std::cout << "client [-s IP address] [-p port]" << std::endl;
                 exit(EXIT_FAILURE);
         }
     }
@@ -40,7 +38,7 @@ main(int argc, char **argv)
     struct hostent *hostEntry;
     hostEntry = gethostbyname(host.c_str());
     if (!hostEntry) {
-        cout << "No such host name: " << host << endl;
+        std::cout << "No such host name: " << host << std::endl;
         exit(-1);
     }
 
@@ -69,8 +67,8 @@ main(int argc, char **argv)
     char* buf = new char[buflen+1];
 
     // read a line from standard input
-    string line;
-    while (getline(cin,line)) {
+    std::string line;
+    while (std::getline(std::cin,line)) {
 
         // write the data to the server
         send(server, line.c_str(), line.length(), 0);
@@ -78,9 +76,9 @@ main(int argc, char **argv)
         // read the response
         memset(buf,0,buflen);
         recv(server,buf,buflen,0);
-        
+
         // print the response
-        cout << buf << endl;
+        std::cout << buf << std::endl;
     }
 
     // Close socket

@@ -11,22 +11,20 @@
 
 #include <string>
 
-using namespace std;
-
 class Server {
 public:
     Server();
     ~Server();
 
     void run();
-    
+
 protected:
     virtual void create();
     virtual void close_socket();
     void serve();
     void handle(int);
-    string get_request(int);
-    bool send_response(int, string);
+    std::string get_request(int);
+    bool send_response(int, std::string);
 
     int server_;
     int buflen_;
