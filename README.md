@@ -1,6 +1,7 @@
 # Socket programming examples in C++
 
-Simple examples that show how to do socket programming in C++. Use
+Simple examples that show how to do socket programming while using
+modern C++ best practices. Use
 
 > make
 
