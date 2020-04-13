@@ -9,10 +9,8 @@ UnixServer::UnixServer() {
   sigIntHandler.sa_handler = interrupt;
   sigemptyset(&sigIntHandler.sa_mask);
   sigIntHandler.sa_flags = 0;
-  sigaction(SIGINT, &sigIntHandler, NULL);
+  sigaction(SIGINT, &sigIntHandler, nullptr);
 }
-
-UnixServer::~UnixServer() {}
 
 void UnixServer::create() {
   struct sockaddr_un server_addr;

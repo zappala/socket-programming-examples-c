@@ -9,17 +9,11 @@
 #include <iostream>
 
 int main(int argc, char** argv) {
-  struct sockaddr_in server_addr, client_addr;
-  socklen_t clientlen = sizeof(client_addr);
-  int option, port, reuse;
-  int server, client;
+  int option, reuse;
   char* buf;
-  int buflen;
-  char* ptr;
-  int nread;
 
   // setup default arguments
-  port = 3000;
+  int port = 3000;
 
   // process command line options using getopt()
   // see "man 3 getopt"
@@ -35,13 +29,14 @@ int main(int argc, char** argv) {
   }
 
   // setup socket address structure
+  struct sockaddr_in server_addr;
   memset(&server_addr, 0, sizeof(server_addr));
   server_addr.sin_family = AF_INET;
   server_addr.sin_port = htons(port);
   server_addr.sin_addr.s_addr = INADDR_ANY;
 
   // create socket
-  server = socket(PF_INET, SOCK_STREAM, 0);
+  const int server = socket(PF_INET, SOCK_STREAM, 0);
   if (!server) {
     perror("socket");
     exit(-1);
@@ -68,10 +63,13 @@ int main(int argc, char** argv) {
   }
 
   // allocate buffer
-  buflen = 1024;
+  static constexpr int buflen = 1024;
   buf = new char[buflen + 1];
 
   // accept clients
+  int client;
+  struct sockaddr_in client_addr;
+  socklen_t clientlen = sizeof(client_addr);
   while ((client = accept(server, (struct sockaddr*)&client_addr, &clientlen)) > 0) {
 
     // loop to handle all requests
@@ -79,7 +77,7 @@ int main(int argc, char** argv) {
 
       // read a request
       memset(buf, 0, buflen);
-      nread = recv(client, buf, buflen, 0);
+      const int nread = recv(client, buf, buflen, 0);
       if (nread == 0)
         break;
 

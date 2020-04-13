@@ -33,8 +33,7 @@ int main(int argc, char** argv) {
   }
 
   // use DNS to get IP address
-  struct hostent* hostEntry;
-  hostEntry = gethostbyname(host.c_str());
+  struct hostent* hostEntry = gethostbyname(host.c_str());
   if (!hostEntry) {
     std::cout << "No such host name: " << host << std::endl;
     exit(-1);
@@ -48,7 +47,7 @@ int main(int argc, char** argv) {
   memcpy(&server_addr.sin_addr, hostEntry->h_addr_list[0], hostEntry->h_length);
 
   // create socket
-  int server = socket(PF_INET, SOCK_STREAM, 0);
+  const int server = socket(PF_INET, SOCK_STREAM, 0);
   if (server < 0) {
     perror("socket");
     exit(-1);
@@ -61,7 +60,7 @@ int main(int argc, char** argv) {
   }
 
   // allocate buffer
-  int buflen = 1024;
+  static constexpr int buflen = 1024;
   char* buf = new char[buflen + 1];
 
   // read a line from standard input

@@ -14,7 +14,7 @@
 class Server {
 public:
   Server();
-  ~Server();
+  virtual ~Server();
 
   void run();
 

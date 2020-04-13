@@ -11,7 +11,7 @@ class UnixServer : public Server {
 
 public:
   UnixServer();
-  ~UnixServer();
+  virtual ~UnixServer() = default;
 
 protected:
   void create();

@@ -59,7 +59,6 @@ void Server::serve() {
 
   // accept clients
   while ((client = accept(server_, (struct sockaddr*)&client_addr, &clientlen)) > 0) {
-
     handle(client);
   }
   close_socket();

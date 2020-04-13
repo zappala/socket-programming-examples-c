@@ -55,7 +55,7 @@ std::string Server::get_request(int client) {
   std::string request = "";
   // read until we get a newline
   while (request.find("\n") == std::string::npos) {
-    int nread = recv(client, buf_, 1024, 0);
+    const int nread = recv(client, buf_, 1024, 0);
     if (nread < 0) {
       if (errno == EINTR)
         // the socket call was interrupted -- try again

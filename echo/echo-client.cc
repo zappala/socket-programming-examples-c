@@ -6,14 +6,13 @@
 #include "client.h"
 
 int main(int argc, char** argv) {
-  int option;
-
   // setup default arguments
   int port = 3000;
   std::string host = "localhost";
 
   // process command line options using getopt()
   // see "man 3 getopt"
+  int option;
   while ((option = getopt(argc, argv, "h:p:")) != -1) {
     switch (option) {
     case 'p':
