@@ -28,6 +28,6 @@ private:
 
   int port_;
   int server_;
-  int buflen_;
+  int buflen_ = 1024;
   char* buf_;
 };

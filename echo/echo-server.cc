@@ -6,10 +6,10 @@
 #include "server.h"
 
 int main(int argc, char** argv) {
-  int option, port;
+  int option;
 
   // setup default arguments
-  port = 3000;
+  int port = 3000;
 
   // process command line options using getopt()
   // see "man 3 getopt"

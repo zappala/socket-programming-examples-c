@@ -10,8 +10,6 @@ Client::Client(std::string host, int port) {
   buf_ = new char[buflen_ + 1];
 }
 
-Client::~Client() {}
-
 void Client::run() {
   // connect to the server and run echo program
   create();

@@ -1,9 +1,6 @@
 #include "server.h"
 
-Server::Server(int port) {
-  // setup variables
-  port_ = port;
-  buflen_ = 1024;
+Server::Server(int port) : port_(port) {
   buf_ = new char[buflen_ + 1];
 }
 

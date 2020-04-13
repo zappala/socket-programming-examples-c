@@ -16,7 +16,7 @@
 class Client {
 public:
   Client(std::string host, int port);
-  ~Client();
+  ~Client() = default;
 
   void run();
 
