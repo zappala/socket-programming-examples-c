@@ -13,19 +13,19 @@
 
 class Client {
 public:
-    Client();
-    ~Client();
+  Client();
+  ~Client();
 
-    void run();
+  void run();
 
 protected:
-    virtual void create();
-    virtual void close_socket();
-    void echo();
-    bool send_request(std::string);
-    bool get_response();
+  virtual void create();
+  virtual void close_socket();
+  void echo();
+  bool send_request(std::string);
+  bool get_response();
 
-    int server_;
-    int buflen_;
-    char* buf_;
+  int server_;
+  int buflen_;
+  char* buf_;
 };

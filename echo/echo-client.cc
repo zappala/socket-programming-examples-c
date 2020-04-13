@@ -5,32 +5,29 @@
 
 #include "client.h"
 
-int
-main(int argc, char **argv)
-{
-    int option;
+int main(int argc, char** argv) {
+  int option;
 
-    // setup default arguments
-    int port = 3000;
-    std::string host = "localhost";
+  // setup default arguments
+  int port = 3000;
+  std::string host = "localhost";
 
-    // process command line options using getopt()
-    // see "man 3 getopt"
-    while ((option = getopt(argc,argv,"h:p:")) != -1) {
-        switch (option) {
-            case 'p':
-                port = atoi(optarg);
-                break;
-            case 'h':
-                host = optarg;
-                break;
-            default:
-                std::cout << "client [-h host] [-p port]" << std::endl;
-                exit(EXIT_FAILURE);
-        }
+  // process command line options using getopt()
+  // see "man 3 getopt"
+  while ((option = getopt(argc, argv, "h:p:")) != -1) {
+    switch (option) {
+    case 'p':
+      port = atoi(optarg);
+      break;
+    case 'h':
+      host = optarg;
+      break;
+    default:
+      std::cout << "client [-h host] [-p port]" << std::endl;
+      exit(EXIT_FAILURE);
     }
+  }
 
-    Client client = Client(host, port);
-    client.run();
+  Client client = Client(host, port);
+  client.run();
 }
-

@@ -10,15 +10,15 @@
 class UnixServer : public Server {
 
 public:
-    UnixServer();
-    ~UnixServer();
+  UnixServer();
+  ~UnixServer();
 
 protected:
-    void create();
-    void close_socket();
+  void create();
+  void close_socket();
 
 private:
-    static void interrupt(int);
-    
-    static const char* socket_name_;
+  static void interrupt(int);
+
+  static const char* socket_name_;
 };

@@ -13,21 +13,21 @@
 
 class Server {
 public:
-    Server(int port);
-    ~Server();
+  Server(int port);
+  ~Server();
 
-    void run();
+  void run();
 
 private:
-    void create();
-    void close_socket();
-    void serve();
-    void handle(int);
-    std::string get_request(int);
-    bool send_response(int, std::string);
+  void create();
+  void close_socket();
+  void serve();
+  void handle(int);
+  std::string get_request(int);
+  bool send_response(int, std::string);
 
-    int port_;
-    int server_;
-    int buflen_;
-    char* buf_;
+  int port_;
+  int server_;
+  int buflen_;
+  char* buf_;
 };

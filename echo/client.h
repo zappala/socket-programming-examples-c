@@ -15,21 +15,21 @@
 
 class Client {
 public:
-    Client(std::string host, int port);
-    ~Client();
+  Client(std::string host, int port);
+  ~Client();
 
-    void run();
+  void run();
 
 private:
-    virtual void create();
-    virtual void close_socket();
-    void echo();
-    bool send_request(std::string);
-    bool get_response();
+  virtual void create();
+  virtual void close_socket();
+  void echo();
+  bool send_request(std::string);
+  bool get_response();
 
-    std::string host_;
-    int port_;
-    int server_;
-    int buflen_;
-    char* buf_;
+  std::string host_;
+  int port_;
+  int server_;
+  int buflen_;
+  char* buf_;
 };

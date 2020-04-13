@@ -7,13 +7,13 @@
 class UnixClient : public Client {
 
 public:
-    UnixClient();
-    ~UnixClient();
+  UnixClient();
+  ~UnixClient();
 
 protected:
-    void create();
-    void close_socket();
+  void create();
+  void close_socket();
 
 private:
-    const char* socket_name_;
+  const char* socket_name_;
 };
