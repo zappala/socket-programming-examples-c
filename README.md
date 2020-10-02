@@ -72,3 +72,5 @@ based on `client.cc` and `client.h`.
 Note that this code reuses the same base classes in `socket.h` and `client.h`,
 showing how you can swap out a different type of socket, but the protocol
 logic and processing remains the same.
+client----- user
+server----system you send request
